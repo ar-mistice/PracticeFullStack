@@ -1,11 +1,8 @@
-FROM python:latest
-RUN pip install --upgrade pip
+FROM nginx:alpine
 
 LABEL maintainer="oggiwer@gmail.com"
 
-RUN mkdir -p /usr/src/app/
-WORKDIR /usr/src/app/
-COPY . /usr/src/app/
-
-EXPOSE 5000
-CMD ["python", "app.py"]
+WORKDIR /usr/share/nginx/html/
+COPY jquery ./jquery
+COPY js ./js
+COPY index.html ./
